@@ -1,0 +1,15 @@
+version: '2'
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer
+    ports:
+      - "9000:9000" # Just in case NGINX goes down
+    volumes:
+      - /data
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - VIRTUAL_HOST=docker.isogen.net
+      - LETSENCRYPT_HOST=docker.isogen.net
+      - LETSENCRYPT_EMAIL=3jackdaws@gmail.com
+    
